@@ -1,0 +1,16 @@
+{
+  "name": "TwitterStreamingDashboard",
+  "version": "1.0.0",
+  "description": "A web dashboard to display twitter streaming data",
+  "author": "blessonm@buffalo.edu",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "*",
+    "socket.io": "*",
+    "kafka-node": "*",
+    "pug": "*"
+  }
+}
