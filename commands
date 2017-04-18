@@ -1,0 +1,8 @@
+kafka-topics.sh --create --zookeeper $ZOOKEEPER --replication-factor 1 --partitions 2 --topic TwitterStream
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --zookeeper zookeeper:2181 --topic TwitterStream
+kafka-topics.sh --describe --zookeeper zookeeper:2181 --topic TwitterStream
+kafka-console-producer.sh --broker-list $KAFKA_ADVERTISED_HOST_NAME:9092 --topic TwitterStream
+
+start-master.sh && start-slave.sh spark://spark:7077
+
+mkdir /tmp/spark-events && cd /tmp/data/ && spark-submit --class TwitterStreaming SparkStreamingDemo-assembly-1.0.jar  
